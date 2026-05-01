@@ -195,6 +195,7 @@ const QualificationFormClient: FC = () => {
 
     const onFormSubmit: SubmitHandler<QualificationForm> = (data: QualificationForm) => {
         console.log(data);
+        toast.success('Submitted successfully. Choose your strategy call slot.');
         router.push('/book-strategy-call');
     };
 
