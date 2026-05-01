@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
 import { SubmitHandler,useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -20,6 +21,8 @@ import { QualificationForm, SavedQualificationFormStep, SavedQualificationFormVa
 import { STEP_STORAGE_KEY, totalSteps,VALUE_STORAGE_KEY } from '@/utils/formContants';
 
 const QualificationFormClient: FC = () => {
+    const router = useRouter();
+
     const defaultValues: QualificationForm = {
         fullName: '',
         phone: '',
@@ -192,6 +195,7 @@ const QualificationFormClient: FC = () => {
 
     const onFormSubmit: SubmitHandler<QualificationForm> = (data: QualificationForm) => {
         console.log(data);
+        router.push('/book-strategy-call');
     };
 
     return (

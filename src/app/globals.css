@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "tailwindcss-animate";
 
 :root {
   --background: #ffffff;
@@ -7,16 +8,12 @@
   --color-bg: #ffffff;
   --color-bg-soft: #f8fafc;
   --color-bg-dark: #0f172a;
-
   --color-text: #0f172a;
   --color-muted: #475569;
   --color-muted-light: #64748b;
-
   --color-border: #e2e8f0;
-
   --color-blue: #2563eb;
   --color-blue-dark: #1d4ed8;
-
   --color-green: #16a34a;
   --color-danger: #dc2626;
 
@@ -28,15 +25,26 @@
   --form-muted: #475569;
   --form-muted-light: #64748b;
   --form-border: #e2e8f0;
-
   --form-blue: #2563eb;
   --form-blue-dark: #1d4ed8;
-
   --form-green: #16a34a;
   --form-red: #dc2626;
   --form-red-bg: #fef2f2;
-
   --form-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+
+  --booking-bg: #f8fafc;
+  --booking-white: #ffffff;
+  --booking-text: #0f172a;
+  --booking-muted: #475569;
+  --booking-muted-light: #64748b;
+  --booking-border: #e2e8f0;
+  --booking-blue: #2563eb;
+  --booking-blue-dark: #1d4ed8;
+  --booking-green: #16a34a;
+  --booking-orange-bg: #fff7ed;
+  --booking-orange-border: #fed7aa;
+  --booking-orange-text: #9a3412;
+  --booking-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
 }
 
 @theme inline {
@@ -72,5 +80,53 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slotSlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slotSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes calendarSlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes calendarSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

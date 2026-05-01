@@ -30,8 +30,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >
-      <Toaster position="top-right" richColors />
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Toaster position='top-right' theme='light' richColors />
+        {children}
+      </body>
     </html>
   );
 }

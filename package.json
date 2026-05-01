@@ -28,6 +28,7 @@
     "eslint-config-next": "16.2.4",
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "tailwindcss": "^4",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
   },
   "overrides": {
