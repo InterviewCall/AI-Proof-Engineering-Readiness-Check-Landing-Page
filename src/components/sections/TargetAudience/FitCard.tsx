@@ -3,7 +3,7 @@ import { FC } from 'react';
 type FitCardProps = {
     title: string
     items: string[],
-    type: 'for' | 'not-for'
+    type: string
 }
 
 const FitCard: FC<FitCardProps> = ({ title, items, type }) => {

@@ -5,6 +5,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Toaster } from 'sonner';
 
 import { siteConfig } from '@/configs/siteConfig';
+import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import StoreProvider from '@/providers/StoreProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,7 +39,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Toaster position='top-right' theme='light' richColors />
-        {children}
+        <StoreProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </StoreProvider>
       </body>
     </html>
   );
