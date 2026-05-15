@@ -1,12 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import candidateAnswerReducer from '@/lib/slices/candidateAnswerSlice';
 import qualificationFormReducer from '@/lib/slices/qualificationFormSlice';
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
-            qualificationForm: qualificationFormReducer
-        }
+            qualificationForm: qualificationFormReducer,
+            candidateAnswer: candidateAnswerReducer
+        },
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
     });
 };
 

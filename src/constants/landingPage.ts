@@ -1,5 +1,5 @@
 export const landingPages = {
-  'ai-proof-engineer': {
+  'ai-proof-engineer-readiness-check': {
     formSlug: 'ai-proof-engineer-readiness-check',
 
     topBar: {
@@ -23,7 +23,7 @@ export const landingPages = {
 
       primaryCta: {
         label: 'Check Your AI-Proof Engineer Readiness',
-        href: '/qualification-form/ai-proof-engineer-readiness-check',
+        href: '/readiness/ai-proof-engineer-readiness-check/qualification-form',
       },
 
       ctaHelperText: 'Takes less than 2 minutes',
@@ -235,7 +235,7 @@ export const landingPages = {
     },
   },
 
-  'product-company-readiness': {
+  'product-company-readiness-check': {
     formSlug: 'product-company-readiness-check',
 
     tracking: {
@@ -266,7 +266,7 @@ export const landingPages = {
 
       primaryCta: {
         label: 'Check Why You’re Not Getting Interview Calls',
-        href: '/qualification-form/product-company-readiness-check',
+        href: '/readiness/product-company-readiness-check/qualification-form',
       },
 
       ctaHelperText: 'Takes less than 2 minutes',
@@ -478,7 +478,7 @@ export const landingPages = {
     },
   },
 
-  'ai-era-market-value': {
+  'ai-era-market-value-check': {
     formSlug: 'ai-era-market-value-check',
 
     tracking: {
@@ -509,7 +509,7 @@ export const landingPages = {
 
       primaryCta: {
         label: 'Check Your AI-Era Engineering Value',
-        href: '/qualification-form/ai-era-market-value-check',
+        href: '/readiness/ai-era-market-value-check/qualification-form',
       },
 
       ctaHelperText: 'Takes less than 2 minutes',

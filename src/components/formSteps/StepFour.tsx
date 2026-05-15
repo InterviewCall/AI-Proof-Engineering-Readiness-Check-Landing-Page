@@ -9,7 +9,7 @@ import StepWrapper from './StepWrapper';
 const StepFour: FC<StepProps> = ({ register, errors }) => {
     return (
         <StepWrapper
-            question="What is your current and target CTC?"
+            title="What is your current and target CTC?"
             helper="This helps us understand your current growth stage."
         >
             <SelectField 

@@ -19,7 +19,7 @@ export type Option = {
     sortOrder: number;
 }
 
-enum QuestionType {
+export enum QuestionType {
     TEXT = 'text',
     EMAIL = 'email',
     PHONE = 'phone',
@@ -55,6 +55,8 @@ export type GetQualificationFormForCandidateResponse = {
     name: string;
     slug: string;
     segmentKey: string;
+    title: string;
+    subTitle: string;
     steps: Step[]
 };
 
@@ -64,3 +66,5 @@ export type GetQualificationFormApiResponse = {
     data: GetQualificationFormForCandidateResponse;
     error?: Record<string, unknown>;
 };
+
+export type CandidateQualificationFormValues = Record<string, string>;

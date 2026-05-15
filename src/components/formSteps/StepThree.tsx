@@ -9,7 +9,7 @@ import StepWrapper from './StepWrapper';
 const StepThree: FC<StepProps> = ({ register, errors, watch }) => {
     return (
         <StepWrapper
-            question="How worried are you about AI affecting your software engineering role?"
+            title="How worried are you about AI affecting your software engineering role?"
             helper="Choose the option that best describes your current concern."
         >
             <RadioGroup 

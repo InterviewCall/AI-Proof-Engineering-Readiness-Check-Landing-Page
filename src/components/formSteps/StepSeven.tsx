@@ -9,7 +9,7 @@ import StepWrapper from './StepWrapper';
 const StepSeven: FC<StepProps> = ({ register, errors, watch }) => {
     return (
         <StepWrapper
-            question="How soon do you want to seriously work on this?"
+            title="How soon do you want to seriously work on this?"
             helper="This helps us prioritize serious candidates for strategy calls."
         >
             <RadioGroup 

@@ -2,16 +2,16 @@ import clsx from 'clsx';
 import { FC } from 'react';
 import { FieldPath, UseFormRegister } from 'react-hook-form';
 
-import { QualificationForm } from '@/types/qualificationForm';
+import { CandidateInfoFormValue } from '@/types/candidateInfoForm';
 
 import FieldErrorMessage from './FieldErrorMessage';
 import FieldLabel from './FieldLabel';
 
 type InputFieldProps = {
-  name: FieldPath<QualificationForm>;
+  name: FieldPath<CandidateInfoFormValue>;
   label: string;
   placeholder: string;
-  register: UseFormRegister<QualificationForm>;
+  register: UseFormRegister<CandidateInfoFormValue>;
   error?: string;
   type?: string;
 };

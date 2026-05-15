@@ -34,12 +34,12 @@ const qualificationFormSlice = createSlice({
             state.currentStepIndex = action.payload;
         },
 
-        getNextStep: (state) => {
+        goToNextStep: (state) => {
             if(!state.form) {
                 return;
             }
 
-            const totalSteps = state.form.steps.length + 1;
+            const totalSteps = state.form.steps.length;
 
             if(state.currentStepIndex < totalSteps - 1) {
                 state.currentStepIndex += 1;
@@ -54,6 +54,6 @@ const qualificationFormSlice = createSlice({
     }
 });
 
-export const { setQualificationForm, clearQualificationForm, setCurrentStepIndex, getNextStep, goToPreviousStep } = qualificationFormSlice.actions;
+export const { setQualificationForm, clearQualificationForm, setCurrentStepIndex, goToNextStep, goToPreviousStep } = qualificationFormSlice.actions;
 
 export default qualificationFormSlice.reducer;

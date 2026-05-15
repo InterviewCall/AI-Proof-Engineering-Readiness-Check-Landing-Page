@@ -9,7 +9,7 @@ import StepWrapper from './StepWrapper';
 const StepFive: FC<StepProps> = ({ register, errors, watch }) => {
     return (
         <StepWrapper
-            question="What do you feel is your biggest gap right now?"
+            title="What do you feel is your biggest gap right now?"
             helper="For AI-era readiness, this helps us identify where you need the most work."
         >
             <RadioGroup 

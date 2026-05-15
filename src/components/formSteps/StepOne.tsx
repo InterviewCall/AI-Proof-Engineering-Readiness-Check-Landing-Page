@@ -8,7 +8,7 @@ import StepWrapper from './StepWrapper';
 const StepOne: FC<StepProps> = ({ register, errors }) => {
     return (
         <StepWrapper
-            question="First, tell us your basic details."
+            title="First, tell us your basic details."
             helper="Our team will use this to contact you for your strategy call."
         >
             <InputField 

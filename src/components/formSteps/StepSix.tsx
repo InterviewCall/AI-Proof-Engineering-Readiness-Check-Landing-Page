@@ -9,7 +9,7 @@ import StepWrapper from './StepWrapper';
 const StepSix: FC<StepProps> = ({ register, errors, watch }) => {
     return (
         <StepWrapper
-            question="What best describes your current career situation?"
+            title="What best describes your current career situation?"
             helper="This helps us understand the urgency behind your interest."
         >
             <RadioGroup

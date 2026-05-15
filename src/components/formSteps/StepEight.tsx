@@ -12,7 +12,7 @@ import StepWrapper from './StepWrapper';
 const StepEight: FC<StepProps> = ({ register, errors, watch }) => {
   return (
     <StepWrapper
-      question="Can you invest in a structured career program if it is the right fit?"
+      title="Can you invest in a structured career program if it is the right fit?"
       helper="The program requires time, effort, and financial commitment."
     >
       <RadioGroup

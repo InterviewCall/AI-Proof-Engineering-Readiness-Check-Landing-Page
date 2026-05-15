@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 export type NavbarProps = {
-  href: string
+  href: string,
 }
 
 const Navbar: FC<NavbarProps> = ({ href }) => {

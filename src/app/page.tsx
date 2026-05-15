@@ -59,17 +59,17 @@ const readinessPages = [
   {
     title: 'AI-Proof Engineer',
     description: 'For engineers worried about AI affecting their role.',
-    href: '/readiness/ai-proof-engineer',
+    href: '/readiness/ai-proof-engineer-readiness-check',
   },
   {
     title: 'Product Company Readiness',
     description: 'For engineers applying but not getting interview calls.',
-    href: '/readiness/product-company-readiness',
+    href: '/readiness/product-company-readiness-check',
   },
   {
     title: 'AI-Era Market Value',
     description: 'For engineers whose salary and role growth have slowed down.',
-    href: '/readiness/ai-era-market-value',
+    href: '/readiness/ai-era-market-value-check',
   },
 ];
 

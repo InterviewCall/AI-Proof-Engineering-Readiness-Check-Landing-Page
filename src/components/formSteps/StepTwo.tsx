@@ -10,7 +10,7 @@ import StepWrapper from './StepWrapper';
 const StepTwo: FC<StepProps> = ({ register, errors }) => {
     return (
         <StepWrapper
-            question="Where are you currently in your engineering career?"
+            title="Where are you currently in your engineering career?"
             helper="This helps us understand your current role and experience level."
         >
             <InputField 
