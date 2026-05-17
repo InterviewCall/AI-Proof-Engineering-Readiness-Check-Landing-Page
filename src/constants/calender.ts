@@ -1,0 +1,1 @@
+export const BOOKING_WINDOW_MONTHS = 3;

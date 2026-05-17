@@ -1,8 +1,8 @@
-import { apiClient } from '@/lib/apiClient';
+import { candidateFormApiClient } from '@/lib/apiClient';
 import { CreateCandidateAnswerResponse, CreateSubmissionPayload } from '@/types/candidateInfoForm';
 
 export async function createCandidateAnswerApi(submissionPayload: CreateSubmissionPayload): Promise<CreateCandidateAnswerResponse> {
-    const response = await apiClient.post<CreateCandidateAnswerResponse>(
+    const response = await candidateFormApiClient.post<CreateCandidateAnswerResponse>(
         `/submissions/${submissionPayload.submissionId}`,
         { answers: submissionPayload.answerPayload }
     );

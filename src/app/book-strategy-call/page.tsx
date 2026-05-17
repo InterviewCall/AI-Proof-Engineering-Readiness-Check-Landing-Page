@@ -19,7 +19,7 @@ const BookCallPage: FC = () => {
         </div>
 
         <section className="grid grid-cols-[0.9fr_1.1fr] items-stretch gap-7.5 max-lg:grid-cols-1">
-          <aside className="overflow-hidden rounded-3xl border border-(--booking-border) bg-(--booking-white) p-8.5 shadow-(--booking-shadow) max-sm:px-5 max-sm:py-6">
+          <aside className="order-1 max-lg:order-2 overflow-hidden rounded-3xl border border-(--booking-border) bg-(--booking-white) p-8.5 shadow-(--booking-shadow) max-sm:px-5 max-sm:py-6">
             <div className="mb-4.5 inline-flex rounded-full bg-[#eff6ff] px-3.5 py-2 text-[13px] font-black text-(--booking-blue-dark)">
               Final Step: Strategy Call
             </div>
@@ -86,7 +86,7 @@ const BookCallPage: FC = () => {
             </div> */}
           </aside>
 
-          <section className="overflow-hidden rounded-3xl border border-(--booking-border) bg-(--booking-white) shadow-(--booking-shadow)">
+          <section className="order-2 max-lg:order-1 overflow-hidden rounded-3xl border border-(--booking-border) bg-(--booking-white) shadow-(--booking-shadow)">
             <div className="bg-[linear-gradient(135deg,#1d4ed8,#0f172a)] p-6.5 text-white max-sm:px-5 max-sm:py-5.5">
               <div className="mb-3 inline-flex rounded-full bg-white/15 px-2.75 py-1.75 text-xs font-black text-[#dbeafe]">
                 AI-Proof Engineer Strategy Call
