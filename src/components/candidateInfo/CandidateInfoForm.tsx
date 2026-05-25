@@ -66,7 +66,7 @@ const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug }) => {
            const response = await createCandidate(candidatePayload);
 
             localStorage.setItem(
-                `candidate_creation_${slug}`,
+                `candidate_submission_${slug}`,
                 response.data.submissionId,
             );
 

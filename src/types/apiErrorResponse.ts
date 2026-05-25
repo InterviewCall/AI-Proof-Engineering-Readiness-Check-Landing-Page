@@ -1,6 +1,6 @@
 export type ApiErrorResponse = {
-    success?: boolean;
-    message?: string;
-    errors?: unknown;
-    error?: unknown;
+    success: boolean;
+    message: string;
+    data: unknown
+    error: unknown;
 };

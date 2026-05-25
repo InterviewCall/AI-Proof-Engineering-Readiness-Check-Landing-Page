@@ -117,7 +117,7 @@ const CandidateQualificationFormContent: FC<CandidateQualificationFormContentPro
 
   const onFormSubmit: SubmitHandler<CandidateQualificationFormValues> = async (values) => {
     try {
-        const submissionId = localStorage.getItem(`candidate_creation_${form.slug}`);
+        const submissionId = localStorage.getItem(`candidate_submission_${form.slug}`);
         if(!submissionId) {
             toast.error('You do not have filled your contact details yet, please fill it first');
             router.push(`/readiness/${form.slug}/candidate-info`);
