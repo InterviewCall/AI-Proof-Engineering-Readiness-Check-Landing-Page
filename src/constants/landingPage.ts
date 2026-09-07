@@ -23,7 +23,7 @@ export const landingPages = {
 
       primaryCta: {
         label: 'Check Your AI-Proof Engineer Readiness',
-        href: '/readiness/ai-proof-engineer-readiness-check/qualification-form',
+        href: '/readiness/ai-proof-engineer-readiness-check/candidate-info',
       },
 
       ctaHelperText: 'Takes less than 2 minutes',
@@ -266,7 +266,7 @@ export const landingPages = {
 
       primaryCta: {
         label: 'Check Why You’re Not Getting Interview Calls',
-        href: '/readiness/product-company-readiness-check/qualification-form',
+        href: '/readiness/product-company-readiness-check/candidate-info',
       },
 
       ctaHelperText: 'Takes less than 2 minutes',
@@ -509,7 +509,7 @@ export const landingPages = {
 
       primaryCta: {
         label: 'Check Your AI-Era Engineering Value',
-        href: '/readiness/ai-era-market-value-check/qualification-form',
+        href: '/readiness/ai-era-market-value-check/candidate-info',
       },
 
       ctaHelperText: 'Takes less than 2 minutes',

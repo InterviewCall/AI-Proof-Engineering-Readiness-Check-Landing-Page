@@ -5,6 +5,7 @@ export type ReservationStatus =
 export type ReservationReviewResponse = {
     candidateName: string;
     candidateEmail: string;
+    candidatePhone: string;
     slotDetails: string;
     expiresAt: string;
     reservationStatus: ReservationStatus;

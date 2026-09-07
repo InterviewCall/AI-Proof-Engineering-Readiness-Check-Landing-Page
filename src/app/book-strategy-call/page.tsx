@@ -103,7 +103,7 @@ const BookCallPage: FC = () => {
             </div>
 
             <div className="relative min-h-172.5 bg-white max-lg:min-h-182.5 max-sm:min-h-190">
-              <BookingCalendar />
+              {/* <BookingCalendar /> */}
             </div>
 
             {/* Later show this after successful booking event */}
