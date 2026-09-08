@@ -1,17 +1,19 @@
 'use client';
 
 import { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
 import {
-  FC,
-  useEffect,
+    FC,
+    useEffect,
 } from 'react';
 import { toast } from 'sonner';
 
+import { useGetCandidate } from '@/hooks/candidate/useGetCandidate';
 import { useGetQualificationForm } from '@/hooks/qualification-form/useGetQualificationForm';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import {
-  clearQualificationForm,
-  setQualificationForm,
+    clearQualificationForm,
+    setQualificationForm,
 } from '@/lib/slices/qualificationFormSlice';
 import { ApiErrorResponse } from '@/types/apiErrorResponse';
 
@@ -20,20 +22,30 @@ import CandidateQualificationFormLoader from './CandidateQualificationFormLoader
 
 export type CandidateQualificationFormProps = {
   slug: string;
+  candidateId?: string;
 };
 
 const CandidateQualificationForm: FC<CandidateQualificationFormProps> = ({
   slug,
+  candidateId,
 }) => {
   const dispatch = useAppDispatch();
 
   const storedForm = useAppSelector((state) => state.qualificationForm.form);
-
+  const router = useRouter();
+  const {
+    isLoading: isCandidateLoading,
+    isError: isCandidateError,
+  } = useGetCandidate(candidateId);
   const { data, isLoading, isError, error, isSuccess } =
     useGetQualificationForm(slug);
 
   const form = storedForm ?? data?.data ?? null;
-
+  useEffect(() => {
+    if (!candidateId || isCandidateError) {
+        router.push(`/readiness/${slug}/candidate-info`);
+    }
+  }, [candidateId, isCandidateError, router, slug]);
   useEffect(() => {
     if (!isSuccess || !data?.data) {
       return;
@@ -63,7 +75,7 @@ const CandidateQualificationForm: FC<CandidateQualificationFormProps> = ({
     };
   }, [dispatch]);
 
-  if (isLoading) {
+  if (isCandidateLoading || isLoading) {
     return <CandidateQualificationFormLoader />;
   }
 

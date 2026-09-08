@@ -70,7 +70,7 @@ const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug }) => {
                 response.data.submissionId,
             );
 
-            router.push(`/readiness/${slug}/qualification-form`); 
+            router.push(`/readiness/${slug}/qualification-form?candidate-id=${response.data.candidateId}`,); 
         } catch {}
     };
 
