@@ -141,7 +141,7 @@ const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug }) => {
                             type="submit"
                             className="btn btn-primary min-h-13.5 rounded-[13px] px-6 text-base font-black text-white shadow-[0_14px_30px_rgba(37,99,235,0.25)] max-sm:w-full"
                         >
-                            Submit Deatils
+                            Submit Details
                         </button>
                     </div>
                 </form>
