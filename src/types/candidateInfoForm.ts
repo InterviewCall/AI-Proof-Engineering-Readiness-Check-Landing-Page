@@ -29,7 +29,7 @@ export type CreateCandidateResponse = {
     success: boolean
     message: string
     data: {
-        candidateId: number,
+        candidateId: string,
         submissionId: string
     };
     error?: Record<string, unknown>;
@@ -43,3 +43,13 @@ export type CreateCandidateAnswerResponse = {
     };
     error?: Record<string, unknown>;
 }
+export type GetCandidateResponse = {
+    success: boolean;
+    message: string;
+    data: {
+        id: number;
+        fullName: string;
+        email: string;
+        phone: string;
+    };
+};
