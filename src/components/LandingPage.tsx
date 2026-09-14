@@ -97,7 +97,10 @@ const LandingPage: FC<LandingPageProps> = ({ landingPageData, slug }) => {
       <FinalCTASection 
         title={landingPageData.finalCTA.title}
         description={landingPageData.finalCTA.description}
-        cta={landingPageData.finalCTA.cta}
+        cta={{
+          ...landingPageData.finalCTA.cta,
+          href: candidateInfoPath,
+        }}
       />
 
       {/* Footer */}
