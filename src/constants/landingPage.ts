@@ -1,5 +1,5 @@
 export const landingPages = {
-  'ai-proof-engineer-readiness-check': {
+  'ai-fear': {
     formSlug: 'ai-proof-engineer-readiness-check',
 
     topBar: {
@@ -235,7 +235,7 @@ export const landingPages = {
     },
   },
 
-  'product-company-readiness-check': {
+  'job-switch': {
     formSlug: 'product-company-readiness-check',
 
     tracking: {
@@ -478,7 +478,7 @@ export const landingPages = {
     },
   },
 
-  'ai-era-market-value-check': {
+  'salary-stagnation': {
     formSlug: 'ai-era-market-value-check',
 
     tracking: {
