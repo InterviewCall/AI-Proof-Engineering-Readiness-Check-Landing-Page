@@ -20,16 +20,18 @@ import Topbar from './Topbar';
 
 export type LandingPageProps = {
     landingPageData: LandingPageData
+    slug: string
 }
 
-const LandingPage: FC<LandingPageProps> = ({ landingPageData }) => {
+const LandingPage: FC<LandingPageProps> = ({ landingPageData, slug }) => {
+    const candidateInfoPath = `/${slug}/candidate-info`;
+
     useUtmTracker(landingPageData.formSlug);
 
     return (
     <main className="w-full overflow-x-hidden bg-(--color-bg) text-(--color-text)">
       <Topbar text={landingPageData.topBar.text} />
-      <Navbar href={`/readiness/${landingPageData.formSlug}/candidate-info`}/>
-
+      <Navbar href={candidateInfoPath}/>
       {/* Section starts */}
 
       {/* Hero */}
@@ -39,7 +41,10 @@ const LandingPage: FC<LandingPageProps> = ({ landingPageData }) => {
         titleHighlight={landingPageData.hero.titleHighlight}
         description={landingPageData.hero.description}
         bulletPoints={landingPageData.hero.bulletPoints}
-        primaryCta={landingPageData.hero.primaryCta}
+        primaryCta={{
+          ...landingPageData.hero.primaryCta,
+          href: candidateInfoPath,
+        }}
         ctaHelperText={landingPageData.hero.ctaHelperText}
         video={landingPageData.hero.video}  
       />
@@ -101,7 +106,7 @@ const LandingPage: FC<LandingPageProps> = ({ landingPageData }) => {
       {/* Section ends */}
 
       <CheckReadinessForMobile 
-        href={`/readiness/${landingPageData.formSlug}/candidate-info`}
+        href={candidateInfoPath}
       />
     </main>
     );
