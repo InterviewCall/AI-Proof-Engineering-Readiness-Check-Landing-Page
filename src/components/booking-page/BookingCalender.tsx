@@ -25,6 +25,8 @@ import SlotReservationConflictModal from './SlotReservationConflictModal';
 type BookingCalendarProps = {
   submissionId: string | null;
   slug: string;
+  routeSlug?: string;
+
 };
 
 const SLOT_CONFLICT_FALLBACK_MESSAGE =
@@ -33,6 +35,7 @@ const SLOT_CONFLICT_FALLBACK_MESSAGE =
 const BookingCalendar: FC<BookingCalendarProps> = ({
   submissionId,
   slug,
+  routeSlug,
 }) => {
   const router = useRouter();
 
@@ -227,7 +230,7 @@ const BookingCalendar: FC<BookingCalendarProps> = ({
       setIsSlotReviewModalOpen(false);
 
       router.replace(
-        `/readiness/${slug}/confirm-booking?${queryParams.toString()}`,
+        `/${routeSlug ?? slug}/confirm-booking?${queryParams.toString()}`,
       );
     } catch (error: unknown) {
       if (isSlotReservationConflictError(error)) {

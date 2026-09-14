@@ -10,9 +10,11 @@ import BookingCalendar from './BookingCalender';
 export type BookingPageProps = {
     content: BookingPageContent
     slug: string
+    routeSlug?: string
+
 }
 
-const BookingPage: FC<BookingPageProps> = ({ content, slug }) => {
+const BookingPage: FC<BookingPageProps> = ({ content, slug , routeSlug }) => {
     const searchParams = useSearchParams();
     const submissionId = searchParams.get('submission-id');
     return (
@@ -91,7 +93,7 @@ const BookingPage: FC<BookingPageProps> = ({ content, slug }) => {
             </div>
 
             <div className="relative min-h-172.5 bg-white max-lg:min-h-182.5 max-sm:min-h-190">
-              <BookingCalendar submissionId={submissionId} slug={slug}  />
+              <BookingCalendar submissionId={submissionId} slug={slug} routeSlug={routeSlug}  />
             </div>
 
             {/* Later show this after successful booking event */}
