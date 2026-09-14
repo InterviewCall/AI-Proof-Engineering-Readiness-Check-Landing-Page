@@ -45,11 +45,12 @@ const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug, routeSlug }) => {
 
         const candidatePayload = {
             slug,
+            landingPage: routeSlug,
             fullName: data.fullName,
             email: data.email,
             phone: data.phone,
 
-            landingPage: utmData?.landingPage,
+
             referrerUrl: utmData?.referrerUrl,
 
             source: utmData?.source,
