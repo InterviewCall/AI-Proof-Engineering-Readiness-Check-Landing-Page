@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import { FC } from 'react';
 
 import CandidateQualificationForm from '@/components/qualification-form/CandidateQualificationForm';
