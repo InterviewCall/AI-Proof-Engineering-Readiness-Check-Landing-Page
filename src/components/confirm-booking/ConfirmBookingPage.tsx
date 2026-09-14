@@ -52,8 +52,8 @@ const ConfirmBookingPage: FC<ConfirmBookingProps> = ({ callTitle }) => {
     const queryString = queryParams.toString();
 
     return queryString
-      ? `/readiness/${slug}/book-strategy-call?${queryString}`
-      : `/readiness/${slug}/book-strategy-call`;
+      ? `/${slug}/book-strategy-call?${queryString}`
+      : `/${slug}/book-strategy-call`;
   }, [slug, submissionId]);
 
   const thankYouPageUrl = useMemo(() => {
@@ -61,7 +61,7 @@ const ConfirmBookingPage: FC<ConfirmBookingProps> = ({ callTitle }) => {
       'reservation-id': reservationId,
     });
 
-    return `/readiness/${slug}/thank-you?${queryParams.toString()}`;
+    return `/${slug}/thank-you?${queryParams.toString()}`;
   }, [slug, reservationId]);
 
   const {
