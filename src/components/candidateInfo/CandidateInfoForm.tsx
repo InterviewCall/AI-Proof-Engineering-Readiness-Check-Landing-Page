@@ -16,15 +16,16 @@ import CandidateFormLoadingOverlay from './CandidateFormLoadingOverlay';
 
 export type CandidateInfoFormProps = {
     slug: string
+    routeSlug?: string
 }
 
-const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug }) => {
+const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug, routeSlug }) => {
     const router = useRouter();
 
     const { mutateAsync: createCandidate, isPending } = useCreateCandidate();
 
     const { getStoredUtmData } = useUtmTracker(slug);
-
+    const readinessRouteSlug = routeSlug ?? slug;
     const {
         register,
         handleSubmit,
@@ -70,7 +71,7 @@ const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug }) => {
                 response.data.submissionId,
             );
 
-            router.push(`/readiness/${slug}/qualification-form?candidate-id=${response.data.candidateId}`,); 
+            router.push(`/${readinessRouteSlug}/qualification-form?candidate-id=${response.data.candidateId}`);
         } catch {}
     };
 

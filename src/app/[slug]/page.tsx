@@ -23,6 +23,9 @@ export default async function ReadinessLaningSlugPage({ params }: ReadinessLanin
     const landingPageData: LandingPageData = landingPages[slug];
 
   return (
-    <LandingPage landingPageData={landingPageData} />
+    <LandingPage 
+        landingPageData={landingPageData} 
+        slug={slug}
+    />
   );
 }

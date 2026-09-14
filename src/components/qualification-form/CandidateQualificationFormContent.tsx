@@ -28,9 +28,10 @@ import HeaderSection from './HeaderSection';
 
 export type CandidateQualificationFormContentProps = {
   form: GetQualificationFormForCandidateResponse;
+  routeSlug?: string;
 };
 
-const CandidateQualificationFormContent: FC<CandidateQualificationFormContentProps> = ({ form }) => {
+const CandidateQualificationFormContent: FC<CandidateQualificationFormContentProps> = ({ form, routeSlug }) => {
   const dispatch = useAppDispatch();
 
   const router = useRouter();
@@ -120,7 +121,7 @@ const CandidateQualificationFormContent: FC<CandidateQualificationFormContentPro
         const submissionId = localStorage.getItem(`candidate_submission_${form.slug}`);
         if(!submissionId) {
             toast.error('You do not have filled your contact details yet, please fill it first');
-            router.push(`/readiness/${form.slug}/candidate-info`);
+            router.push(`/${routeSlug ?? form.slug}/candidate-info`);
             return;
         }
 
@@ -131,7 +132,7 @@ const CandidateQualificationFormContent: FC<CandidateQualificationFormContentPro
             answerPayload
         });
 
-        router.push(`/readiness/${form.slug}/book-strategy-call?submission-id=${response.data.submissionId}`);
+        router.push(`/${routeSlug ?? form.slug}/book-strategy-call?submission-id=${response.data.submissionId}`);
     } catch {}
   };
   return (
