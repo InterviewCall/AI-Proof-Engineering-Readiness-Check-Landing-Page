@@ -23,11 +23,13 @@ import CandidateQualificationFormLoader from './CandidateQualificationFormLoader
 export type CandidateQualificationFormProps = {
   slug: string;
   candidateId?: string;
+  routeSlug?: string;
 };
 
 const CandidateQualificationForm: FC<CandidateQualificationFormProps> = ({
   slug,
   candidateId,
+  routeSlug
 }) => {
   const dispatch = useAppDispatch();
 
@@ -43,9 +45,9 @@ const CandidateQualificationForm: FC<CandidateQualificationFormProps> = ({
   const form = storedForm ?? data?.data ?? null;
   useEffect(() => {
     if (!candidateId || isCandidateError) {
-        router.push(`/readiness/${slug}/candidate-info`);
+        router.push(`/${routeSlug ?? slug}/candidate-info`);
     }
-  }, [candidateId, isCandidateError, router, slug]);
+  }, [candidateId, isCandidateError, router, routeSlug, slug]);
   useEffect(() => {
     if (!isSuccess || !data?.data) {
       return;
@@ -107,7 +109,10 @@ const CandidateQualificationForm: FC<CandidateQualificationFormProps> = ({
   }
 
   return (
-    <CandidateQualificationFormContent form={form} />
+    <CandidateQualificationFormContent 
+      form={form}
+      routeSlug={routeSlug}
+    />
   );
 };
 
