@@ -1,84 +1,180 @@
 // src/constants/bookingPageContent.ts
 
 export type BookingPageContent = {
-  statusPill: string;
-  callTitle: string;
+    statusPill: string;
+    callTitle: string;
 
-  aside: {
-    badge: string;
-    titlePrefix: string;
-    highlightedTitle: string;
-    titleSuffix: string;
-    description: string;
+    aside: {
+        badge: string;
+        titlePrefix: string;
+        highlightedTitle: string;
+        titleSuffix: string;
+        description: string;
 
-    callBox: {
-      heading: string;
-      items: string[];
+        callBox: {
+            heading: string;
+            items: string[];
+        };
+
+        expectations: {
+            heading: string;
+            items: string[];
+        };
+
+        warning: string;
     };
 
-    expectations: {
-      heading: string;
-      items: string[];
+    calendarHeader: {
+        badge: string;
+        title: string;
+        description: string;
     };
 
-    warning: string;
-  };
-
-  calendarHeader: {
-    badge: string;
-    title: string;
-    description: string;
-  };
-
-  footerNote: string;
+    footerNote: string;
 };
 
 export const bookingPageContentBySlug: Record<string, BookingPageContent> = {
-  'ai-proof-engineer-readiness-check': {
-    statusPill: 'Readiness check submitted — final step pending',
-    callTitle: 'AI-Proof Engineer Strategy Call',
+    'ai-proof-engineer-readiness-check': {
+        statusPill: 'Readiness check submitted — final step pending',
+        callTitle: 'AI-Proof Engineer Strategy Call',
 
-    aside: {
-      badge: 'Final Step: Strategy Call',
+        aside: {
+            badge: 'Final Step: Strategy Call',
 
-      titlePrefix: 'Book Your',
-      highlightedTitle: 'AI-Proof Engineer',
-      titleSuffix: 'Strategy Call',
+            titlePrefix: 'Book Your',
+            highlightedTitle: 'AI-Proof Engineer',
+            titleSuffix: 'Strategy Call',
 
-      description:
-        'Based on your answers, our team will help you understand whether your current skillset is strong enough for the AI-era hiring market.',
+            description:
+                'Based on your answers, our team will help you understand whether your current skillset is strong enough for the AI-era hiring market.',
 
-      callBox: {
-        heading: 'What happens in this call?',
-        items: [
-          'We understand your current role and the kind of engineering work you are doing today.',
-          'We identify whether your risk is DSA, system design, AI workflow, projects, or interview readiness.',
-          'We explain whether the AI-Proof Engineer Program is suitable for your goals and current stage.',
-        ],
-      },
+            callBox: {
+                heading: 'What happens in this call?',
+                items: [
+                    'We understand your current role and the kind of engineering work you are doing today.',
+                    'We identify whether your risk is DSA, system design, AI workflow, projects, or interview readiness.',
+                    'We explain whether the AI-Proof Engineer Program is suitable for your goals and current stage.',
+                ],
+            },
 
-      expectations: {
-        heading: 'Please attend only if you are serious.',
-        items: [
-          'Join from a quiet place with proper internet.',
-          'Keep 30 minutes free for the discussion.',
-          'Be ready to discuss your current work, goals, and skill gaps honestly.',
-          'If selected, our team will explain program structure, pricing, and EMI options.',
-        ],
-      },
+            expectations: {
+                heading: 'Please attend only if you are serious.',
+                items: [
+                    'Join from a quiet place with proper internet.',
+                    'Keep 30 minutes free for the discussion.',
+                    'Be ready to discuss your current work, goals, and skill gaps honestly.',
+                    'If selected, our team will explain program structure, pricing, and EMI options.',
+                ],
+            },
 
-      warning:
-        'This call is for serious working engineers who want to stay valuable in the AI era. Please choose a slot only if you can attend without distractions.',
+            warning:
+                'This call is for serious working engineers who want to stay valuable in the AI era. Please choose a slot only if you can attend without distractions.',
+        },
+
+        calendarHeader: {
+            badge: 'AI-Proof Engineer Strategy Call',
+            title: 'Select your call slot',
+            description:
+                'Pick a time that you can attend without distractions. Your submitted answers will help our team guide the call better.',
+        },
+
+        footerNote:
+            '©️ InterviewCall. Your booking details will be used only for the strategy call and program-fit evaluation.',
     },
 
-    calendarHeader: {
-      badge: 'AI-Proof Engineer Strategy Call',
-      title: 'Select your call slot',
-      description:
-        'Pick a time that you can attend without distractions. Your submitted answers will help our team guide the call better.',
+    'product-company-readiness-check': {
+        statusPill: 'Readiness check submitted — final step pending',
+        callTitle: 'Product Company Strategy Call',
+
+        aside: {
+            badge: 'Final Step: Strategy Call',
+
+            titlePrefix: 'Book Your',
+            highlightedTitle: 'Product Company',
+            titleSuffix: 'Strategy Call',
+
+            description:
+                'Based on your answers, our team will help you understand your product-company interview readiness and identify the areas you need to strengthen.',
+
+            callBox: {
+                heading: 'What happens in this call?',
+                items: [
+                    'We understand your current role and the kind of engineering work you are doing today.',
+                    'We identify whether your gap is DSA, system design, projects, AI workflow, or interview readiness.',
+                    'We explain whether the AI-Proof Engineer Program is suitable for your goals and current stage.',
+                ],
+            },
+
+            expectations: {
+                heading: 'Please attend only if you are serious.',
+                items: [
+                    'Join from a quiet place with proper internet.',
+                    'Keep 30 minutes free for the discussion.',
+                    'Be ready to discuss your current work, goals, and skill gaps honestly.',
+                    'If selected, our team will explain program structure, pricing, and EMI options.',
+                ],
+            },
+
+            warning:
+                'This call is for serious engineers who want to prepare for better product-company opportunities. Please choose a slot only if you can attend without distractions.',
+        },
+
+        calendarHeader: {
+            badge: 'Product Company Strategy Call',
+            title: 'Select your call slot',
+            description:
+                'Pick a time that you can attend without distractions. Your submitted answers will help our team guide the call better.',
+        },
+
+        footerNote:
+            '©️ InterviewCall. Your booking details will be used only for the strategy call and program-fit evaluation.',
     },
 
-    footerNote:
-      '©️ InterviewCall. Your booking details will be used only for the strategy call and program-fit evaluation.',
-  },
+    'ai-era-market-value-check': {
+        statusPill: 'Readiness check submitted — final step pending',
+        callTitle: 'AI-Era Engineering Strategy Call',
+
+        aside: {
+            badge: 'Final Step: Strategy Call',
+
+            titlePrefix: 'Book Your',
+            highlightedTitle: 'AI-Era Engineering',
+            titleSuffix: 'Strategy Call',
+
+            description:
+                'Based on your answers, our team will help you understand what may be limiting your engineering market value, salary growth, or role progression.',
+
+            callBox: {
+                heading: 'What happens in this call?',
+                items: [
+                    'We understand your current role and the kind of engineering work you are doing today.',
+                    'We identify the skills and engineering gaps affecting your current market value.',
+                    'We explain whether the AI-Proof Engineer Program is suitable for your goals and current stage.',
+                ],
+            },
+
+            expectations: {
+                heading: 'Please attend only if you are serious.',
+                items: [
+                    'Join from a quiet place with proper internet.',
+                    'Keep 30 minutes free for the discussion.',
+                    'Be ready to discuss your current work, goals, and skill gaps honestly.',
+                    'If selected, our team will explain program structure, pricing, and EMI options.',
+                ],
+            },
+
+            warning:
+                'This call is for serious working engineers who want to increase their market value and career growth. Please choose a slot only if you can attend without distractions.',
+        },
+
+        calendarHeader: {
+            badge: 'AI-Era Engineering Strategy Call',
+            title: 'Select your call slot',
+            description:
+                'Pick a time that you can attend without distractions. Your submitted answers will help our team guide the call better.',
+        },
+
+        footerNote:
+            '©️ InterviewCall. Your booking details will be used only for the strategy call and program-fit evaluation.',
+    },
 };
