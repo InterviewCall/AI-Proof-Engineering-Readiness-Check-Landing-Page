@@ -13,6 +13,7 @@ import { CandidateInfoFormValue } from '@/types/candidateInfoForm';
 import StepWrapper from '../formSteps/StepWrapper';
 import InputField from '../InputField';
 import CandidateFormLoadingOverlay from './CandidateFormLoadingOverlay';
+import LandingPage from '../LandingPage';
 
 export type CandidateInfoFormProps = {
     slug: string
@@ -45,13 +46,13 @@ const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug, routeSlug }) => {
 
         const candidatePayload = {
             slug,
-            landingPage: routeSlug,
             fullName: data.fullName,
             email: data.email,
             phone: data.phone,
 
 
             referrerUrl: utmData?.referrerUrl,
+            landingPage: utmData?.landingPage,
 
             source: utmData?.source,
             utmSource: utmData?.utmSource,
