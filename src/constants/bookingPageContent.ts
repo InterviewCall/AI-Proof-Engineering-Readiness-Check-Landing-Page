@@ -34,7 +34,7 @@ export type BookingPageContent = {
 };
 
 export const bookingPageContentBySlug: Record<string, BookingPageContent> = {
-    'ai-proof-engineer-readiness-check': {
+    'ai-fear': {
         statusPill: 'Readiness check submitted — final step pending',
         callTitle: 'AI-Proof Engineer Strategy Call',
 
@@ -82,7 +82,7 @@ export const bookingPageContentBySlug: Record<string, BookingPageContent> = {
             '©️ InterviewCall. Your booking details will be used only for the strategy call and program-fit evaluation.',
     },
 
-    'product-company-readiness-check': {
+    'job-switch': {
         statusPill: 'Readiness check submitted — final step pending',
         callTitle: 'Product Company Strategy Call',
 
@@ -130,7 +130,7 @@ export const bookingPageContentBySlug: Record<string, BookingPageContent> = {
             '©️ InterviewCall. Your booking details will be used only for the strategy call and program-fit evaluation.',
     },
 
-    'ai-era-market-value-check': {
+    'salary-stagnation': {
         statusPill: 'Readiness check submitted — final step pending',
         callTitle: 'AI-Era Engineering Strategy Call',
 

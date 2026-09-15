@@ -1,6 +1,6 @@
 export const landingPages = {
   'ai-fear': {
-    formSlug: 'ai-proof-engineer-readiness-check',
+    formSlug: 'ai-fear',
 
     topBar: {
       text: 'For working software engineers worried about AI, layoffs, and the next hiring wave',
@@ -236,7 +236,7 @@ export const landingPages = {
   },
 
   'job-switch': {
-    formSlug: 'product-company-readiness-check',
+    formSlug: 'job-switch',
 
     tracking: {
       source: 'job_switch',
@@ -479,7 +479,7 @@ export const landingPages = {
   },
 
   'salary-stagnation': {
-    formSlug: 'ai-era-market-value-check',
+    formSlug: 'salary-stagnation',
 
     tracking: {
       source: 'salary_stagnation',
