@@ -258,7 +258,9 @@ const BookingCalendar: FC<BookingCalendarProps> = ({
        * For non-slot-conflict errors, keep the review modal open.
        * Your mutation hook can show its standard error toast.
        */
-    }
+      
+      setIsSlotReviewModalOpen(false);
+      }
   };
 
   return (
