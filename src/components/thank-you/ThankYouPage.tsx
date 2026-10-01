@@ -140,12 +140,12 @@ const ThankYouPage: FC<ThankYouPageProps> = ({ callTitle }) => {
               </div>
 
               <div className="mt-7 text-center">
-                <Link
+                {/* <Link
                   href="/"
                   className="inline-flex min-h-13 items-center justify-center rounded-[14px] bg-[#2563eb] px-8 text-base font-black text-white shadow-[0_14px_30px_rgba(37,99,235,0.25)] transition hover:bg-[#1d4ed8]"
                 >
                   Go to InterviewCall Home
-                </Link>
+                </Link> */}
 
                 <p className="mt-4 text-xs font-semibold text-[#64748b]">
                   You may close this page now. Your confirmed slot has been

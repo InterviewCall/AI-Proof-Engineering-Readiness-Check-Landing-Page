@@ -12,8 +12,8 @@ import { CandidateInfoFormValue } from '@/types/candidateInfoForm';
 
 import StepWrapper from '../formSteps/StepWrapper';
 import InputField from '../InputField';
-import CandidateFormLoadingOverlay from './CandidateFormLoadingOverlay';
 import LandingPage from '../LandingPage';
+import CandidateFormLoadingOverlay from './CandidateFormLoadingOverlay';
 
 export type CandidateInfoFormProps = {
     slug: string
