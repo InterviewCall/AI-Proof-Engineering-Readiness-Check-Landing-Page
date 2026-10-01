@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import HeroBullet from './HeroBullets';
 import PrimaryCTA from './PrimaryCTA';
+import VslPlayer from './VslPlayer';
 
 export type HeroSectionProps = {
   badgeText: string,
@@ -24,6 +25,9 @@ export type HeroSectionProps = {
 }
 
 const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighlight, description, bulletPoints, primaryCta, ctaHelperText, video}) => {
+    // YouTube / Vimeo links need an <iframe>; direct files (like our S3 .mp4) use <video>
+    const isEmbed = /(youtube\.com|youtu\.be|vimeo\.com)/.test(video.embedUrl);
+
     return (
         <section className="bg-[radial-gradient(circle_at_20%_10%,rgba(37,99,235,0.12),transparent_35%),linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] py-17 max-lg:py-12">
         <div className="mx-auto grid w-[min(1180px,92%)] grid-cols-[0.95fr_1.05fr] items-center gap-11.5 max-lg:grid-cols-1">
@@ -72,13 +76,17 @@ const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighli
             </div>
 
             <div className="aspect-video overflow-hidden rounded-2xl bg-[#020617]">
-              <iframe
-                src={video.embedUrl}
-                title={video.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full border-0"
-              />
+              {isEmbed ? (
+                <iframe
+                  src={video.embedUrl}
+                  title={video.title}
+                  allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full border-0"
+                />
+              ) : (
+                <VslPlayer src={video.embedUrl} title={video.title} />
+              )}
             </div>
 
             <div className="px-1 pb-0.5 pt-3.25 text-center text-sm font-extrabold text-(--color-muted)">

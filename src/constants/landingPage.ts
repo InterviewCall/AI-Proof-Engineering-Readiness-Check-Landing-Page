@@ -266,7 +266,7 @@ export const landingPages = {
 
       primaryCta: {
         label: 'Check Why You’re Not Getting Interview Calls',
-        href: '/readiness/product-company-readiness-check/candidate-info',
+        href: '/job-switch/candidate-info',
       },
 
       ctaHelperText: 'Takes less than 2 minutes',
@@ -275,7 +275,7 @@ export const landingPages = {
         eyebrow: 'Watch this before applying to more roles',
         badgeText: 'Free Breakdown',
         embedUrl:
-          'https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0&modestbranding=1',
+          'https://interviewcall-vsl.s3.ap-southeast-2.amazonaws.com/job-switch/final_vslb.mp4',
         title: 'InterviewCall Product Company Readiness VSL',
         footerText:
           'This video explains why applying more may not solve your job-switch problem.',
