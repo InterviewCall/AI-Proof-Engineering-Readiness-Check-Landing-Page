@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import { notFound } from 'next/navigation';
+import { FC } from 'react';
 
 import ConfirmBookingPage from '@/components/confirm-booking/ConfirmBookingPage';
 import { bookingPageContentBySlug } from '@/constants/bookingPageContent';
