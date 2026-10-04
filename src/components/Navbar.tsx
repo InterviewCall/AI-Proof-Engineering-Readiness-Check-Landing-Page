@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -8,9 +9,19 @@ export type NavbarProps = {
 const Navbar: FC<NavbarProps> = ({ href }) => {
   return (
     <nav className="sticky top-0 z-50 border-b border-(--color-border) bg-white/90 py-4.5 backdrop-blur-xl">
-      <div className="mx-auto flex w-[min(1180px,92%)] items-center justify-between gap-4">
-        <div className="text-[21px] font-black tracking-[-0.5px] text-[#020617] max-sm:text-lg">
-          Interview<span className="text-(--color-blue)">Call</span>
+      <div className="mx-auto flex w-[min(1180px,92%)] items-center justify-between gap-4 max-sm:justify-center">
+        <div className="flex items-center gap-2.5 text-[21px] font-black tracking-[-0.5px] text-[#020617] max-sm:gap-2.5 max-sm:text-[22px]">
+          <Image
+            src="/company-new-logo.svg"
+            alt="InterviewCall logo"
+            width={105}
+            height={120}
+            priority
+            className="h-9 w-auto max-sm:h-10"
+          />
+          <span>
+            Interview<span className="text-(--color-blue)">Call</span>
+          </span>
         </div>
 
         <Link

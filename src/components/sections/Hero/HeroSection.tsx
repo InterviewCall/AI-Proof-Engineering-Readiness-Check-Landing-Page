@@ -30,31 +30,31 @@ const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighli
 
     return (
         <section className="bg-[radial-gradient(circle_at_20%_10%,rgba(37,99,235,0.12),transparent_35%),linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] py-17 max-lg:py-12">
-        <div className="mx-auto grid w-[min(1180px,92%)] grid-cols-[0.95fr_1.05fr] items-center gap-11.5 max-lg:grid-cols-1">
-          <div>
-            <div className="mb-4.5 inline-flex items-center gap-2 rounded-full bg-[#e0f2fe] px-3.5 py-2 text-sm font-black text-[#0369a1]">
+        <div className="mx-auto grid w-[min(1180px,92%)] grid-cols-[0.95fr_1.05fr] items-center gap-11.5 max-lg:grid-cols-1 max-sm:flex max-sm:flex-col max-sm:gap-0">
+          <div className="max-sm:contents">
+            <div className="max-sm:hidden mb-4.5 inline-flex items-center gap-2 rounded-full bg-[#e0f2fe] px-3.5 py-2 text-sm font-black text-[#0369a1] max-sm:order-1 max-sm:self-start">
               <span className="h-2 w-2 rounded-full bg-(--color-blue) shadow-[0_0_0_5px_rgba(37,99,235,0.15)]" />
               {badgeText}
             </div>
 
-            <h1 className="mb-5 text-[clamp(40px,5.5vw,68px)] font-black leading-[1.02] tracking-[-2px] text-[#020617] max-sm:tracking-[-1.3px]">
+            <h1 className="mb-5 text-[clamp(40px,5.5vw,68px)] font-black leading-[1.02] tracking-[-2px] text-[#020617] max-sm:order-2 max-sm:tracking-[-1.3px]">
               {titlePrefix}{' '}
               <span className="text-(--color-blue)">
                 {titleHighlight}
               </span>
             </h1>
 
-            <p className="mb-6.5 max-w-165 text-[19px] text-(--color-muted) max-sm:text-[17px]">
+            <p className="mb-6.5 max-w-165 text-[19px] text-(--color-muted) max-sm:order-4 max-sm:hidden max-sm:text-[17px]">
               {description}
             </p>
 
-            <div className="mb-7.5 grid gap-3.25">
+            <div className="mb-7.5 grid gap-3.25 max-sm:order-5">
               {bulletPoints.map((point) => (
                 <HeroBullet key={point} text={point} />
               ))}
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 max-sm:w-full">
+            <div className="flex flex-wrap items-center gap-4 max-sm:order-6 max-sm:w-full">
               <PrimaryCTA href={primaryCta.href}>
                 {primaryCta.label}
               </PrimaryCTA>
@@ -65,7 +65,7 @@ const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighli
             </div>
           </div>
 
-          <div className="rounded-3xl border border-(--color-border) bg-white p-3 shadow-(--shadow-premium)">
+          <div className="rounded-3xl border border-(--color-border) bg-white p-3 shadow-(--shadow-premium) max-sm:order-3 max-sm:mb-7.5">
             <div className="flex items-center justify-between gap-3 px-1 pb-3 pt-1 text-sm font-extrabold text-(--color-muted) max-sm:flex-col max-sm:items-start">
               <span>{video.eyebrow}</span>
 
