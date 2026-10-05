@@ -1,5 +1,8 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 
+import { VideoGateStatus } from '@/hooks/video-gate/useVideoGate';
+
+import LockedVideoPreview from '../../videoGate/LockedVideoPreview';
 import HeroBullet from './HeroBullets';
 import PrimaryCTA from './PrimaryCTA';
 import VslPlayer from './VslPlayer';
@@ -12,7 +15,8 @@ export type HeroSectionProps = {
   bulletPoints: string[],
   primaryCta: {
     label: string,
-    href: string
+    href: string,
+    onClick?: MouseEventHandler<HTMLAnchorElement>
   },
   ctaHelperText: string,
   video: {
@@ -20,13 +24,22 @@ export type HeroSectionProps = {
     badgeText: string,
     embedUrl: string,
     title: string,
-    footerText: string
+    footerText: string,
+    // when set, the video is locked behind the details popup and this silent clip is shown instead
+    previewSrc?: string,
+    posterSrc?: string
+  },
+  videoGate?: {
+    status: VideoGateStatus,
+    onRequestUnlock: () => void
   }
 }
 
-const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighlight, description, bulletPoints, primaryCta, ctaHelperText, video}) => {
+const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighlight, description, bulletPoints, primaryCta, ctaHelperText, video, videoGate }) => {
     // YouTube / Vimeo links need an <iframe>; direct files (like our S3 .mp4) use <video>
     const isEmbed = /(youtube\.com|youtu\.be|vimeo\.com)/.test(video.embedUrl);
+    const isGated = Boolean(videoGate && video.previewSrc && !isEmbed);
+    const isLocked = isGated && videoGate?.status !== 'unlocked';
 
     return (
         <section className="bg-[radial-gradient(circle_at_20%_10%,rgba(37,99,235,0.12),transparent_35%),linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] py-17 max-lg:py-12">
@@ -55,7 +68,7 @@ const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighli
             </div>
 
             <div className="flex flex-wrap items-center gap-4 max-sm:order-6 max-sm:w-full">
-              <PrimaryCTA href={primaryCta.href}>
+              <PrimaryCTA href={primaryCta.href} onClick={primaryCta.onClick}>
                 {primaryCta.label}
               </PrimaryCTA>
 
@@ -75,8 +88,16 @@ const HeroSection: FC<HeroSectionProps> = ({ badgeText, titlePrefix, titleHighli
               </span>
             </div>
 
-            <div className="aspect-video overflow-hidden rounded-2xl bg-[#020617]">
-              {isEmbed ? (
+            <div id="hero-video" className="aspect-video scroll-mt-24 overflow-hidden rounded-2xl bg-[#020617]">
+              {isLocked && video.previewSrc ? (
+                <LockedVideoPreview
+                  previewSrc={video.previewSrc}
+                  posterSrc={video.posterSrc}
+                  title={video.title}
+                  isChecking={videoGate?.status === 'checking'}
+                  onUnlockClick={() => videoGate?.onRequestUnlock()}
+                />
+              ) : isEmbed ? (
                 <iframe
                   src={video.embedUrl}
                   title={video.title}

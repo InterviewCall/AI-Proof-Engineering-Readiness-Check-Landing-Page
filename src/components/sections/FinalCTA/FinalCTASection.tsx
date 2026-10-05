@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 
 export type FinalCTASectionProps = {
   title: string,
   description: string,
   cta: {
     label: string,
-    href: string
+    href: string,
+    onClick?: MouseEventHandler<HTMLAnchorElement>
   }
 }
 
@@ -24,6 +25,7 @@ const FinalCTASection: FC<FinalCTASectionProps> = ({ title, description, cta }) 
 
         <Link
           href={cta.href}
+          onClick={cta.onClick}
           className="inline-flex min-h-14 items-center justify-center rounded-[14px] bg-white px-6.5 text-base font-black text-(--color-blue-dark) shadow-[0_16px_34px_rgba(37,99,235,0.28)] transition hover:-translate-y-0.5 hover:bg-[#eff6ff]"
         >
           {cta.label}

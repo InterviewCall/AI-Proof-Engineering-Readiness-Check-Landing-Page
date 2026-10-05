@@ -1,9 +1,10 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, MouseEvent, useCallback, useState } from 'react';
 
-import { LandingPageData } from '@/constants/landingPage';
+import { HeroVideoConfig, LandingPageData } from '@/constants/landingPage';
 import { useUtmTracker } from '@/hooks/utm-tracking/useUtmTracker';
+import { useVideoGate } from '@/hooks/video-gate/useVideoGate';
 
 import CheckReadinessForMobile from './CheckRedinessForMobile';
 import Navbar from './Navbar';
@@ -17,6 +18,7 @@ import ProblemSection from './sections/Problem/ProblemSection';
 import ProofSection from './sections/Proof/ProofSection';
 import TargetAudienceSection from './sections/TargetAudience/TargetAudienceSection';
 import Topbar from './Topbar';
+import CandidateDetailsModal from './videoGate/CandidateDetailsModal';
 
 export type LandingPageProps = {
     landingPageData: LandingPageData
@@ -24,14 +26,44 @@ export type LandingPageProps = {
 }
 
 const LandingPage: FC<LandingPageProps> = ({ landingPageData, slug }) => {
-    const candidateInfoPath = `/${slug}/candidate-info`;
+    const video: HeroVideoConfig = landingPageData.hero.video;
+    const isVideoGated = Boolean(video.previewSrc);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const closeModal = useCallback(() => setIsModalOpen(false), []);
 
     useUtmTracker(landingPageData.formSlug);
+
+    // Visitors who already gave their details (this device or ?candidate-id=) get the video + a "Check readiness" that starts at step 1.
+    // Everyone else is sent to the normal details page.
+    const { status: videoStatus, readinessHref: candidateInfoPath, unlock } = useVideoGate({
+        formSlug: landingPageData.formSlug,
+        routeSlug: slug,
+        enabled: isVideoGated,
+    });
+
+    // Until the visitor has given their details, every "Check readiness" button opens the same popup
+    // (instead of going to /candidate-info). Once unlocked they are normal links to step 1 of the form.
+    const openDetailsPopup = isVideoGated && videoStatus !== 'unlocked'
+      ? (event: MouseEvent<HTMLAnchorElement>) => {
+          event.preventDefault();
+          setIsModalOpen(true);
+        }
+      : undefined;
+
+    const handleSubmitted = ({ candidateId, submissionId }: { candidateId: string, submissionId: string }) => {
+      unlock(candidateId, submissionId);
+      closeModal();
+      // the button may have been far from the video: bring it into view so they see it start
+      requestAnimationFrame(() => {
+        document.getElementById('hero-video')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    };
 
     return (
     <main className="w-full overflow-x-hidden bg-(--color-bg) text-(--color-text)">
       <Topbar text={landingPageData.topBar.text} />
-      <Navbar href={candidateInfoPath}/>
+      <Navbar href={candidateInfoPath} onClick={openDetailsPopup} />
       {/* Section starts */}
 
       {/* Hero */}
@@ -44,9 +76,14 @@ const LandingPage: FC<LandingPageProps> = ({ landingPageData, slug }) => {
         primaryCta={{
           ...landingPageData.hero.primaryCta,
           href: candidateInfoPath,
+          onClick: openDetailsPopup,
         }}
         ctaHelperText={landingPageData.hero.ctaHelperText}
-        video={landingPageData.hero.video}  
+        video={video}
+        videoGate={isVideoGated ? {
+          status: videoStatus,
+          onRequestUnlock: () => setIsModalOpen(true),
+        } : undefined}
       />
 
       {/* Problem */}
@@ -100,6 +137,7 @@ const LandingPage: FC<LandingPageProps> = ({ landingPageData, slug }) => {
         cta={{
           ...landingPageData.finalCTA.cta,
           href: candidateInfoPath,
+          onClick: openDetailsPopup,
         }}
       />
 
@@ -110,7 +148,16 @@ const LandingPage: FC<LandingPageProps> = ({ landingPageData, slug }) => {
 
       <CheckReadinessForMobile 
         href={candidateInfoPath}
+        onClick={openDetailsPopup}
       />
+
+      {isModalOpen && videoStatus !== 'unlocked' && (
+        <CandidateDetailsModal
+          formSlug={landingPageData.formSlug}
+          onClose={closeModal}
+          onSubmitted={handleSubmitted}
+        />
+      )}
     </main>
     );
 };

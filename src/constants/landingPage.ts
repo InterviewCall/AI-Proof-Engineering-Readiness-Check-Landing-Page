@@ -279,6 +279,9 @@ export const landingPages = {
         title: 'InterviewCall Product Company Readiness VSL',
         footerText:
           'This video explains why applying more may not solve your job-switch problem.',
+        // Silent teaser shown until the visitor submits their details (see useVideoGate)
+        previewSrc: '/previews/job-switch-preview.mp4',
+        posterSrc: '/previews/job-switch-preview-poster.jpg',
       },
     },
 
@@ -725,3 +728,14 @@ export const landingPages = {
 export type LandingPageSlug = keyof typeof landingPages;
 
 export type LandingPageData = (typeof landingPages)[LandingPageSlug];
+
+// Pages without previewSrc keep the old behaviour (video visible straight away, no popup).
+export type HeroVideoConfig = {
+  eyebrow: string
+  badgeText: string
+  embedUrl: string
+  title: string
+  footerText: string
+  previewSrc?: string
+  posterSrc?: string
+};

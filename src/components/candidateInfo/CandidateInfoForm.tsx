@@ -1,18 +1,9 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { FC } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { FC, useState } from 'react';
 
-import { useCreateCandidate } from '@/hooks/create-candidate/useCreateCandidate';
-import { useUtmTracker } from '@/hooks/utm-tracking/useUtmTracker';
-import { candidateFormSchema } from '@/schemas/candidateFormSchema';
-import { CandidateInfoFormValue } from '@/types/candidateInfoForm';
-
-import StepWrapper from '../formSteps/StepWrapper';
-import InputField from '../InputField';
-import LandingPage from '../LandingPage';
+import CandidateDetailsForm, { CandidateDetailsSubmitResult } from './CandidateDetailsForm';
 import CandidateFormLoadingOverlay from './CandidateFormLoadingOverlay';
 
 export type CandidateInfoFormProps = {
@@ -22,59 +13,11 @@ export type CandidateInfoFormProps = {
 
 const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug, routeSlug }) => {
     const router = useRouter();
-
-    const { mutateAsync: createCandidate, isPending } = useCreateCandidate();
-
-    const { getStoredUtmData } = useUtmTracker(slug);
+    const [isPending, setIsPending] = useState(false);
     const readinessRouteSlug = routeSlug ?? slug;
-    const {
-        register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm<CandidateInfoFormValue>({
-        resolver: zodResolver(candidateFormSchema),
-        mode: 'onTouched',
-        defaultValues: {
-            fullName: '',
-            phone: '',
-            email: ''
-        }
-    });
 
-    const onFormSubmit: SubmitHandler<CandidateInfoFormValue> = async (data) => {
-        const utmData = getStoredUtmData();
-
-        const candidatePayload = {
-            slug,
-            fullName: data.fullName,
-            email: data.email,
-            phone: data.phone,
-
-
-            referrerUrl: utmData?.referrerUrl,
-            landingPage: utmData?.landingPage,
-
-            source: utmData?.source,
-            utmSource: utmData?.utmSource,
-            utmMedium: utmData?.utmMedium,
-            utmCampaign: utmData?.utmCampaign,
-            utmContent: utmData?.utmContent,
-            utmTerm: utmData?.utmTerm,
-
-            gclid: utmData?.gclid,
-            fbclid: utmData?.fbclid,
-        };
-
-        try {
-           const response = await createCandidate(candidatePayload);
-
-            localStorage.setItem(
-                `candidate_submission_${slug}`,
-                response.data.submissionId,
-            );
-
-            router.push(`/${readinessRouteSlug}/qualification-form?candidate-id=${response.data.candidateId}`);
-        } catch {}
+    const handleSubmitted = ({ candidateId }: CandidateDetailsSubmitResult) => {
+        router.push(`/${readinessRouteSlug}/qualification-form?candidate-id=${candidateId}`);
     };
 
     return (
@@ -107,47 +50,13 @@ const CandidateInfoForm: FC<CandidateInfoFormProps> = ({ slug, routeSlug }) => {
                     </p>
                 </header>
 
-                <form onSubmit={handleSubmit(onFormSubmit)} className="p-8 max-sm:px-5">
-                    <StepWrapper
-                        title='First, tell us your basic details.'
-                        helper='Our team will use this to contact you for your AI-Proof Engineer readiness call and share the next steps after your assessment.'
-                    >
-                        <InputField
-                            name="fullName"
-                            label="Full Name *"
-                            placeholder="Enter your full name"
-                            register={register}
-                            error={errors.fullName?.message}
-                        />
-
-                        <InputField 
-                            name="phone"
-                            label="WhatsApp Number *"
-                            type="tel"
-                            placeholder="Enter your WhatsApp number"
-                            register={register}
-                            error={errors.phone?.message}
-                        />
-
-                        <InputField 
-                            name="email"
-                            label="Email Address *"
-                            type="email"
-                            placeholder="Enter your email address"
-                            register={register}
-                            error={errors.email?.message}
-                        />
-                    </StepWrapper>
-
-                    <div className="mt-8 flex justify-center gap-3.5 max-sm:flex-col-reverse">
-                        <button
-                            type="submit"
-                            className="btn btn-primary min-h-13.5 rounded-[13px] px-6 text-base font-black text-white shadow-[0_14px_30px_rgba(37,99,235,0.25)] max-sm:w-full"
-                        >
-                            Submit Details
-                        </button>
-                    </div>
-                </form>
+                <div className="p-8 max-sm:px-5">
+                    <CandidateDetailsForm
+                        slug={slug}
+                        onSubmitted={handleSubmitted}
+                        onPendingChange={setIsPending}
+                    />
+                </div>
             </section>
         </main>
     );
